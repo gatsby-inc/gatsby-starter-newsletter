@@ -1,103 +1,124 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's newsletter starter
-</h1>
+## Guidelines
 
-Kick off your project with this boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+- This exercise should take you 4-6 hours to complete
+  - They don’t need to be consecutive hours, and we won’t be timing you! This is simply a guideline.
+- We recognize this time frame might not let you be as comprehensive as you’d like. That’s okay!
 
-## 🚀 Quick start
+## Requirements
 
-1.  **Create a Gatsby site.**
+For this exercise, you will implement the sign-up flow based on a set of provided designs. The zip folder for the project is available at [link]. (Designs for both desktop and mobile views can be found in the /designs folder).
 
-    Use the Gatsby CLI to create a new site, using this repo as a starter.
+Your engineering team has already been provided an API endpoint where form data can be posted. The Additional Docs section includes more information about how the endpoint works. For this exercise, you'll only be building the frontend that communicates with the API endpoint. (You won't need to make any additional changes to the API itself.)
 
-    ```shell
-    # create a new Gatsby site using this starter
-    gatsby new my-project https://github.com/gatsby-inc/gatsby-starter-newsletter.git
-    ```
+Your implementation should meet the following requirements:
 
-1.  **Start developing.**
+- Post your form data to the API provided (see Additional Docs below).
+- Work at all screen sizes, including the desktop and mobile views provided in the designs.
+- Gracefully handle any errors that come back from the API.
+- Include automated tests for your implementation.
+- Choose **_only one_** of the following requirements:
+  - Add some additional styling to the existing designs.
+  - Improve the accessibility of your form.
+  - Write your code in TypeScript.
+  - Do something else that shows off your skills! (If you choose this option, explain in your README why this is a valuable addition.)
 
-    Navigate into your new site’s directory and start it up.
+Along with your code submission, please include a **brief** README to cover the following:
 
-    ```shell
-    cd my-project/
-    gatsby develop
-    ```
+- Explain any decisions you made when working on the assignment. (Trade-offs or other considerations.)
+- What are some questions you would ask the designer about this design?
+- We are always looking to improve our interviewing process! Please let us know what your experience was completing this project. (Your answer here won't count for/against you, but we'll use your feedback to make improvements to this assignment.)
+  - Was the scope too large to finish within the given time requirement? Was it not large enough? Are there any improvements we could make the prompt easier to understand?
 
-1.  **Open the source code and start editing!**
+Your goal is to finish as much of this as you can in the time that you have!
 
-    Your site is now running at `http://localhost:8000`!
+## Additional Docs
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-4)._
+- Form submission API endpoint
+- Countries and regions
+- Testing conventions
 
-    Open the `my-project` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### Form submission API endpoint
 
-## 🚀 Quick start (Gatsby Cloud)
+Your engineering team has already built an endpoint (**/api/form**) that you can use to submit form data. To submit form data, you can make a POST request to the endpoint, as shown in the code block below:
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+```jsx
+const response = await window
+  .fetch(`/api/form`, {
+    method: `POST`,
+    headers: {
+      "content-type": "application/json",
+    },
+    body: {
+      // Insert whatever data you want to send in the request.
+      // For example:
+      hello: "world",
+    },
+  })
+  .then(res => res.json())
+```
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
+A successful response will look like the object below:
 
-## 🧐 What's inside?
+```jsx
+{
+  status: 200,
+  data: {
+    message: "Successful registration"
+  }
+}
+```
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+If something is wrong with the request that was sent (like it's not a POST request or there's some data missing), the endpoint will respond with a 400 error similar to the one below:
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+```jsx
+{
+  status: 400,
+  errors: [{
+    message: "Missing required field: name"
+  }]
+}
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+Unfortunately, the endpoint isn't super reliable. Sometimes, things go wrong on the server, and requests will return a 500 error code. In that case, the response will look something like this:
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+```jsx
+{
+  status: 500,
+  errors: [{
+    message: ["Internal server error, please try again."]
+  }]
+}
+```
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+Note that the error property returns an array of errors; there may be more than one error message returned.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+### Countries and regions
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+The project code includes a JSON file (**src/data/countryRegionSelect.json**) that contains all the countries to be included in the Country dropdown.
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+Some of the countries will also require an additional Region field:
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+- If the country is USA, the Region dropdown should list the U.S. states.
+- If the country is Canada, the Region dropdown should list the Canadian provinces.
+- If the country is something else, the Region dropdown should not display.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+The available states and provinces can also be found in the **src/data/countryRegionSelect.json** file.
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+### Testing conventions
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+The project is already set up to use [testing framework]. If you decide to add automated tests for your form, look at [path for file with API tests] for an example of how to use the testing framework.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+## How to Submit
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+Use the files in this project as an initial commit to a new private Github repository. Submit your solution as a pull request to that repository. Please include a PR description that explains the approach to the problems. You may also use that opportunity to explain how you prioritized the items or communicate anything else of importance.
 
-## 🎓 Learning Gatsby
+When you’ve completed your project, please send the link to the private repository to [caitlin.byrnes@gatsbyjs.com](mailto:caitlin.byrnes@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+- smthomas
+- TylerBarnes
+- thinkybeast
+- meganesu
+- fk
+- jxnblk
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _How-To Guides_, and _Reference Guides_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Once you’ve submitted your work, you can expect to hear from Rachel about payment details within 2 business days.
