@@ -10,7 +10,7 @@ export default function formHandler(req, res) {
       )
   }
 
-  // Returns a server error 33% of the time
+  // Returns a server error 20% of the time
   const throwRandomError = Math.random() * 100 < 20
 
   if (throwRandomError) {
