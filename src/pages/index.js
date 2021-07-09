@@ -6,8 +6,24 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const siteTitle = data?.site?.siteMetadata?.title || `Title`
+  const posts = data?.allMarkdownRemark?.nodes || []
+
+  React.useEffect(() => {
+    const submitForm = async () => {
+      const response = await window
+        .fetch(`/api/form`, {
+          method: `POST`,
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then(res => res.json())
+      console.log(response)
+    }
+
+    submitForm()
+  }, [])
 
   if (posts.length === 0) {
     return (
