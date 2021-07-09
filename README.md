@@ -6,7 +6,7 @@
 
 ## Requirements
 
-For this exercise, you will implement the sign-up flow based on a set of provided designs. The zip folder for the project is available at [link]. (Designs for both desktop and mobile views can be found in the /designs folder).
+For this exercise, you will implement the sign-up flow based on a set of provided designs. The zip folder for the project is available at [https://drive.google.com/drive/folders/1M4wIUtPAlktGpi-Tg0h6JH1UsUYe8_7s]. (Designs for both desktop and mobile views can be found in the /designs folder).
 
 Your engineering team has already been provided an API endpoint where form data can be posted. The Additional Docs section includes more information about how the endpoint works. For this exercise, you'll only be building the frontend that communicates with the API endpoint. (You won't need to make any additional changes to the API itself.)
 
@@ -33,9 +33,9 @@ Your goal is to finish as much of this as you can in the time that you have!
 
 ## Additional Docs
 
-- Form submission API endpoint
-- Countries and regions
-- Testing conventions
+- [Form submission API endpoint](#form-submission-api-endpoint)
+- [Countries and regions](#countries-and-regions)
+- [Testing conventions](#testing-conventions)
 
 ### Form submission API endpoint
 
@@ -68,7 +68,7 @@ A successful response will look like the object below:
 }
 ```
 
-If something is wrong with the request that was sent (like it's not a POST request or there's some data missing), the endpoint will respond with a 400 error similar to the one below:
+If something is wrong with the request that was sent (like it's not a POST request or there's some data missing), the endpoint will respond with a 400 error similar to the one below. (Your client-side validation of the form inputs should check for any data problems before calling the form endpoint.)
 
 ```jsx
 {
@@ -79,7 +79,7 @@ If something is wrong with the request that was sent (like it's not a POST reque
 }
 ```
 
-Unfortunately, the endpoint isn't super reliable. Sometimes, things go wrong on the server, and requests will return a 500 error code. In that case, the response will look something like this:
+Unfortunately, the form endpoint isn't super reliable. Sometimes, things go wrong on the server, and requests will return a 500 error code. In that case, the response will look something like this:
 
 ```jsx
 {
@@ -90,7 +90,7 @@ Unfortunately, the endpoint isn't super reliable. Sometimes, things go wrong on 
 }
 ```
 
-Note that the error property returns an array of errors; there may be more than one error message returned.
+Note that the error property returns an *array* of errors; there may be more than one error message returned.
 
 ### Countries and regions
 
@@ -106,7 +106,7 @@ The available states and provinces can also be found in the **src/data/countryRe
 
 ### Testing conventions
 
-The project is already set up to use [testing framework]. If you decide to add automated tests for your form, look at [path for file with API tests] for an example of how to use the testing framework.
+The project is already set up to use Jest. If you decide to add automated tests for your form, look at the **src/tests/layout.test.js** file for an example of how to use the testing framework.
 
 ## How to Submit
 
