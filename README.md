@@ -15,8 +15,11 @@ Your implementation should meet the following requirements:
 - Post your form data to the API provided (see Additional Docs below).
 - Gracefully handle any errors that come back from the API.
 - Include automated tests for your implementation.
-- Add a new field for _ZIP/Postal Code_ and update the API in `src/api/form.js` to handle the new field in the request
+- Persist the form submissions locally using [json-server][]
 - The front-end styling should roughly match the desktop designs
+<!-- - Add a new field for _ZIP/Postal Code_ and update the API in `src/api/form.js` to handle the new field in the request -->
+
+[json-server]: https://npmjs.com/package/json-server
 
 Along with your code submission, please include a **brief** README to cover the following:
 
@@ -31,7 +34,6 @@ Your goal is to finish as much of this as you can in the time that you have!
 
 - [Form submission API endpoint](#form-submission-api-endpoint)
 - [Countries and regions](#countries-and-regions)
-- [ZIP/Postal Code](#zip-postal-code)
 - [Testing conventions](#testing-conventions)
 
 ### Form submission API endpoint
@@ -101,10 +103,12 @@ Some of the countries will also require an additional Region field:
 
 The available states and provinces can also be found in the **src/data/countryRegionSelect.json** file.
 
+<!--
 ### ZIP/Postal Code
 
 Although it hasn't been included in the design, you've been tasked with adding a ZIP/Postal Code field to the form.
 Update the front-end form and the backend API (`src/api/form.js`) to support this.
+-->
 
 ### Testing conventions
 
