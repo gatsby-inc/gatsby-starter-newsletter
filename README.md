@@ -16,11 +16,7 @@ Your implementation should meet the following requirements:
 - Work at all screen sizes, including the desktop and mobile views provided in the designs.
 - Gracefully handle any errors that come back from the API.
 - Include automated tests for your implementation.
-- Choose **_only one_** of the following requirements:
-  - Add some additional styling to the existing designs.
-  - Improve the accessibility of your form.
-  - Write your code in TypeScript.
-  - Do something else that shows off your skills! (If you choose this option, explain in your README why this is a valuable addition.)
+- Add a new field for _ZIP/Postal Code_ and update the API in `src/api/form.js` to handle the new field in the request
 
 Along with your code submission, please include a **brief** README to cover the following:
 
@@ -35,6 +31,7 @@ Your goal is to finish as much of this as you can in the time that you have!
 
 - [Form submission API endpoint](#form-submission-api-endpoint)
 - [Countries and regions](#countries-and-regions)
+- [ZIP/Postal Code](#zip-postal-code)
 - [Testing conventions](#testing-conventions)
 
 ### Form submission API endpoint
@@ -104,6 +101,11 @@ Some of the countries will also require an additional Region field:
 
 The available states and provinces can also be found in the **src/data/countryRegionSelect.json** file.
 
+### ZIP/Postal Code
+
+Although it hasn't been included in the design, you've been tasked with adding a ZIP/Postal Code field to the form.
+Update the front-end form and the backend API (`src/api/form.js`) to support this.
+
 ### Testing conventions
 
 The project is already set up to use Jest. If you decide to add automated tests for your form, look at the **src/tests/layout.test.js** file for an example of how to use the testing framework.
@@ -117,7 +119,6 @@ When you’ve completed your project, please send the link to the private reposi
 - smthomas
 - TylerBarnes
 - thinkybeast
-- meganesu
 - fk
 - jxnblk
 
