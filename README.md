@@ -17,7 +17,6 @@ Your implementation should meet the following requirements:
 - Include automated tests for your implementation.
 - Persist the form submissions locally using [json-server][]
 - The front-end styling should roughly match the desktop designs
-<!-- - Add a new field for _ZIP/Postal Code_ and update the API in `src/api/form.js` to handle the new field in the request -->
 
 [json-server]: https://npmjs.com/package/json-server
 
@@ -103,13 +102,6 @@ Some of the countries will also require an additional Region field:
 
 The available states and provinces can also be found in the **src/data/countryRegionSelect.json** file.
 
-<!--
-### ZIP/Postal Code
-
-Although it hasn't been included in the design, you've been tasked with adding a ZIP/Postal Code field to the form.
-Update the front-end form and the backend API (`src/api/form.js`) to support this.
--->
-
 ### Testing conventions
 
 The project is already set up to use Jest. If you decide to add automated tests for your form, look at the **src/tests/layout.test.js** file for an example of how to use the testing framework.
@@ -120,10 +112,11 @@ Use the files in this project as an initial commit to a new private Github repos
 
 When you’ve completed your project, please send the link to the private repository to [caitlin.byrnes@gatsbyjs.com](mailto:caitlin.byrnes@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
 
-- smthomas
-- TylerBarnes
-- thinkybeast
-- fk
+- vitaliy-at-gatsby
+- rmatambo8
 - jxnblk
+- thinkybeast
+- aghreed
+- fk
 
 Once you’ve submitted your work, you can expect to hear from Rachel about payment details within 2 business days.
