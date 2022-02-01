@@ -13,10 +13,10 @@ Your engineering team has already been provided an API endpoint where form data 
 Your implementation should meet the following requirements:
 
 - Post your form data to the API provided (see Additional Docs below).
-- Work at all screen sizes, including the desktop and mobile views provided in the designs.
 - Gracefully handle any errors that come back from the API.
 - Include automated tests for your implementation.
 - Add a new field for _ZIP/Postal Code_ and update the API in `src/api/form.js` to handle the new field in the request
+- The front-end styling should roughly match the desktop designs
 
 Along with your code submission, please include a **brief** README to cover the following:
 
