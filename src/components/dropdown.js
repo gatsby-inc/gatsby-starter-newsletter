@@ -1,16 +1,11 @@
 import React from "react"
-import { useSelect, UseSelectStateChange } from "downshift"
+import { useSelect } from "downshift"
 
 const Dropdown = ({
   items,
   selectedItem,
   handleSelectedItemChange,
   tabIndex = 0,
-}: {
-  items: string[]
-  selectedItem: string
-  handleSelectedItemChange: (changes: UseSelectStateChange<string>) => void
-  tabIndex?: number
 }) => {
   const {
     isOpen,

@@ -12,7 +12,7 @@ Your engineering team has already been provided a functional UI where users can 
 
 Your implementation should meet the following requirements:
 
-- Setup an endpoint to process newsletter sign-ups.
+- Setup a new server with an endpoint to process newsletter sign-ups.
 - Handle the POST requests with form data that the UI provided makes upon submission (see Additional Docs below).
 - Gracefully handle any errors per the validation rules.
 - The front-end should show any validation errors returned from unsuccessful form submissions.
@@ -41,7 +41,7 @@ Your goal is to finish as much of this as you can in the time that you have!
 
 ### Form submission API endpoint
 
-Your job is to build an endpoint that can be used to process submitted form data. An example of the JSON payload you will be processing can be seen below.
+Your job is to setup a new Node.js server and build an endpoint that can be used to process submitted form data. The UI is expecting to send a `POST` to `http://localhost:3000/newsletter-signup`. An example of the JSON payload you will be processing can be seen below:
 
 ```json
 {

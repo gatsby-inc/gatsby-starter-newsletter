@@ -13,10 +13,9 @@ const regions = countryRegionData.reduce(
   []
 )
 
-const showServerErrors = (serverError: ServerError) =>
-  serverError.status !== 200
+const showServerErrors = serverError => serverError.status !== 200
 
-const renderFormHeader = (serverError: ServerError) => {
+const renderFormHeader = serverError => {
   if (showServerErrors(serverError)) {
     return (
       <div key="error" className="error-message-container">
@@ -54,28 +53,16 @@ const renderFormHeader = (serverError: ServerError) => {
   )
 }
 
-type FormValues = {
-  name: string
-  email: string
-  country: string
-  region?: string
-}
-
-const initialValues: FormValues = {
+const initialValues = {
   name: "",
   email: "",
   country: "Select a country",
   region: regionPlaceholderValue,
 }
 
-type ServerError = {
-  status: number
-  errorMessages: string[]
-}
-
 const NewsletterSignup = () => {
-  const [submissionSuccess, setSubmissionSuccess] = useState<boolean>(false)
-  const [serverError, setServerError] = useState<ServerError>({
+  const [submissionSuccess, setSubmissionSuccess] = useState(false)
+  const [serverError, setServerError] = useState({
     status: 200,
     errorMessages: [],
   })
@@ -84,19 +71,24 @@ const NewsletterSignup = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={async values => {
-          const response = await window.fetch(`TODO: your endpoint URL`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({
-              name: values.name,
-              email: values.email,
-              country: values.country,
-              region:
-                values.region === regionPlaceholderValue ? null : values.region,
-            }),
-          })
+          const response = await window.fetch(
+            `http://localhost:3000/newsletter-signup`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                name: values.name,
+                email: values.email,
+                country: values.country,
+                region:
+                  values.region === regionPlaceholderValue
+                    ? null
+                    : values.region,
+              }),
+            }
+          )
 
           const { errors } = await response.json()
           if (response.ok) {
@@ -150,7 +142,7 @@ const NewsletterSignup = () => {
                   <div className={`input-group`}>
                     <label htmlFor="country">Country *</label>
                     <Field id="country" name="country">
-                      {({ field }: FieldProps) => (
+                      {({ field }) => (
                         <Dropdown
                           items={countries}
                           selectedItem={field.value}
