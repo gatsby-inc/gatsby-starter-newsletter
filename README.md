@@ -12,7 +12,7 @@ Your engineering team has already been provided a functional UI where users can 
 
 Your implementation should meet the following requirements:
 
-- Setup a server to with an endpoint to process newsletter sign-ups.
+- Setup an endpoint to process newsletter sign-ups.
 - Handle the POST requests with form data that the UI provided makes upon submission (see Additional Docs below).
 - Gracefully handle any errors per the validation rules.
 - The front-end should show any validation errors returned from unsuccessful form submissions.
@@ -41,9 +41,7 @@ Your goal is to finish as much of this as you can in the time that you have!
 
 ### Form submission API endpoint
 
-Your job is to build an endpoint that can be used to process submitted form data. The expectation is for this endpoint to be a standalone server accepting `POST` requests at `http://localhost:3000/newsletter-signup`.
-
-An example of the JSON payload you will be processing can be seen below:
+Your job is to build an endpoint that can be used to process submitted form data. An example of the JSON payload you will be processing can be seen below.
 
 ```json
 {
@@ -72,7 +70,7 @@ A successful response will look like the object below:
 }
 ```
 
-If something is wrong with the request that was sent (missing or invalid input), the endpoint should respond with a 400 error similar to the one below. (The client is not validating any of the form inputs, so it's all on the server to validate the information provided).
+If something is wrong with the request that was sent (missing or invalid input), the endpoint should respond with a 400 error similar to the one below. (Note: The client is not validating any of the form inputs, so it's all on the server to validate the information provided).
 
 ```jsx
 {
@@ -83,7 +81,7 @@ If something is wrong with the request that was sent (missing or invalid input),
 }
 ```
 
-Note that the error property returns an _array_ of errors; there may be more than one error message returned.
+Also note that the error property returns an _array_ of errors; there may be more than one error message returned.
 
 ### Countries and regions
 
@@ -99,7 +97,7 @@ The available states and provinces can also be found in the **src/data/countryRe
 
 ### Testing conventions
 
-TODO: set testing expectations here
+The project is already set up to use Jest, however you can decide to use another test framework if you prefer. The point is to see some sort of test coverage on the code you write to satisfy the project requirements.
 
 ## How to Submit
 

@@ -13,8 +13,6 @@ const regions = countryRegionData.reduce(
   []
 )
 
-console.log("regions: ", regions)
-
 const showServerErrors = (serverError: ServerError) =>
   serverError.status !== 200
 
@@ -86,24 +84,19 @@ const NewsletterSignup = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={async values => {
-          const response = await window.fetch(
-            `http://localhost:3000/newsletter-signup`,
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify({
-                name: values.name,
-                email: values.email,
-                country: values.country,
-                region:
-                  values.region === regionPlaceholderValue
-                    ? null
-                    : values.region,
-              }),
-            }
-          )
+          const response = await window.fetch(`TODO: your endpoint URL`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({
+              name: values.name,
+              email: values.email,
+              country: values.country,
+              region:
+                values.region === regionPlaceholderValue ? null : values.region,
+            }),
+          })
 
           const { errors } = await response.json()
           if (response.ok) {
