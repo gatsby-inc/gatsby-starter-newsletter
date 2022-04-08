@@ -74,6 +74,7 @@ module.exports = {
         `,
         feeds: [
           {
+            title: 'Gatsby Starter Newsletter',
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
