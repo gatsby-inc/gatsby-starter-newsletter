@@ -16,8 +16,8 @@ Your implementation should meet the following requirements:
 - Handle the POST requests with form data that the UI provided makes upon submission (see Additional Docs below).
 - Gracefully handle any errors per the validation rules.
 - The front-end should show any validation errors returned from unsuccessful form submissions.
-- Persist successful form submissions locally by writing to a JSON file.
-- Include unit tests for your implementation.
+- Persist successful form submissions locally by writing to a JSON file (see Persisting submissions below).
+- Include automated tests for your implementation.
 - Choose _only one_ of the following requirements:
   - Write your code in TypeScript.
   - Add an additional field to the form and endpoint that might be useful such as phone number, zip code, or desired newsletter frequency.
@@ -36,6 +36,7 @@ Your goal is to finish as much of this as you can in the time that you have!
 ## Additional Docs
 
 - [Form submission API endpoint](#form-submission-api-endpoint)
+- [Persisting submissions](#persisting-submissions)
 - [Countries and regions](#countries-and-regions)
 - [Testing conventions](#testing-conventions)
 
@@ -82,6 +83,12 @@ If something is wrong with the request that was sent (missing or invalid input),
 ```
 
 Also note that the error property returns an _array_ of errors; there may be more than one error message returned.
+
+### Persisting submissions
+
+We will want to keep track of all the valid newsletter sign ups so that we can reach out to these individuals later. As the last part of processing a successful submission, persist the submission fields by writing to a JSON file.
+
+To ensure that users cannot get on the newsletter list twice, return a custom error message if the email address has previously been submitted and persisted.
 
 ### Countries and regions
 
