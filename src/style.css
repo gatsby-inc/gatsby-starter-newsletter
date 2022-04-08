@@ -60,6 +60,10 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --color-accent-light: #eef5fb;
+  --color-success: #088413;
+  --color-error: #c20011;
+  --color-error-light: #fffafa;
 }
 
 /* HTML elements */
@@ -319,6 +323,231 @@ a:focus {
   margin-bottom: var(--spacing-8);
 }
 
+/* Newsletter signup */
+
+.newsletter-signup {
+  margin-top: 28px;
+  padding-top: 72px;
+}
+
+.newsletter-signup-form-container {
+  max-width: 632px;
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid var(--color-accent);
+  padding: 48px;
+}
+
+.newsletter-signup-form-container.error {
+  border-color: var(--color-error);
+  background-color: var(--color-error-light);
+}
+
+.newsletter-signup-form-container.success {
+  border-color: var(--color-success);
+  background-color: var(--color-success);
+}
+
+.newsletter-signup-form-container.success p {
+  color: #fff;
+}
+
+.newsletter-signup-form-container h4 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.newsletter-signup-form-container.success h4 {
+  color: #fff;
+}
+
+.newsletter-signup-form-container p {
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-medium);
+}
+
+.newsletter-signup-form-container .error-message-container h4 {
+  color: var(--color-error);
+}
+
+.newsletter-signup-form-container .error-message-container ul {
+  list-style-position: inside;
+  list-style-image: url("images/x.svg");
+}
+
+.newsletter-signup-form-container .error-message-container ul li .emphasize {
+  display: inline;
+  font-weight: var(--fontWeight-bold);
+  text-decoration: underline;
+}
+
+.newsletter-signup-form-container form {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 48px;
+  grid-row-gap: 48px;
+}
+
+.newsletter-signup-form-container .input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-signup-form-container .input-group.disabled {
+  opacity: 25%;
+}
+
+.newsletter-signup-form-container .input-group label {
+  font-size: var(--fontSize-0);
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-normal);
+  color: var(--color-text-light);
+  padding-bottom: 8px;
+}
+
+.newsletter-signup-form-container .input-group input {
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid var(--color-accent);
+  transition: all 200ms linear;
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-normal);
+  font-size: var(--fontSize-1);
+  padding: 0 12px;
+}
+
+.newsletter-signup-form-container .input-group.disabled input {
+  pointer-events: none;
+}
+
+.newsletter-signup-form-container .input-group.disabled button {
+  pointer-events: none;
+}
+
+.newsletter-signup-form-container .input-group.error input {
+  border: 1px solid var(--color-error);
+}
+
+.newsletter-signup-form-container .input-group.error .dropdown {
+  border: 1px solid var(--color-error);
+}
+
+.newsletter-signup-form-container .input-group input:focus {
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 6px 6px var(--color-accent-light);
+}
+
+.newsletter-signup-form-container .input-group input:focus-visible {
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 6px 6px var(--color-accent-light);
+  outline: none;
+}
+
+.newsletter-signup-form-container .input-group .dropdown button:focus-visible {
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 6px 6px var(--color-accent-light);
+  outline: none;
+}
+
+.newsletter-signup-form-container .submit-button {
+  height: 44px;
+  width: fit-content;
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-bold);
+  font-size: var(--fontSize-1);
+  color: #fff;
+  background-color: var(--color-primary);
+  padding: 0 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 200ms linear;
+}
+
+.newsletter-signup-form-container .submit-button:hover {
+  opacity: 90%;
+}
+
+.newsletter-signup-form-container span {
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-normal);
+  font-size: var(--fontSize-0);
+  color: var(--color-text-light);
+  justify-self: end;
+}
+
+/* Dropdown */
+
+.dropdown {
+  position: relative;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid var(--color-accent);
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-normal);
+  font-size: var(--fontSize-1);
+}
+
+.dropdown button {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.dropdown button .caret {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-top: 5px solid var(--color-text);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  transition: all 200ms linear;
+}
+
+.dropdown button .caret.up {
+  transform: rotate(0.5turn);
+}
+
+.dropdown ul {
+  max-height: 200px;
+  overflow-y: scroll;
+  background-color: #fff;
+  list-style: none;
+  margin-top: -3px;
+  width: calc(100% + 2px);
+  position: relative;
+  left: -1px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.dropdown ul.open {
+  border: 1px solid var(--color-accent);
+  border-top: none;
+}
+
+.dropdown ul:focus-visible {
+  border: 1px solid var(--color-primary);
+  outline: none;
+}
+
+.dropdown ul li {
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 4px 0 4px 12px;
+}
+
+.dropdown ul li.highlight {
+  background-color: var(--color-accent);
+}
+
 /* Media queries */
 
 @media (max-width: 42rem) {
@@ -329,5 +558,17 @@ a:focus {
   ul,
   ol {
     list-style-position: inside;
+  }
+}
+
+@media (max-width: 600px) {
+  .newsletter-signup-form-container {
+    padding: 24px;
+  }
+
+  .newsletter-signup-form-container form {
+    margin-top: 24px;
+    grid-template-columns: 1fr;
+    grid-row-gap: 24px;
   }
 }

@@ -6,26 +6,30 @@
 
 ## Requirements
 
-For this exercise, you will implement the sign-up flow based on a set of provided designs. The zip folder for the project is available at [https://drive.google.com/drive/folders/1M4wIUtPAlktGpi-Tg0h6JH1UsUYe8_7s]. (Designs for both desktop and mobile views can be found in the /designs folder).
+For this exercise, you will implement the backend of a newsletter sign-up form — validating input and persisting successful submissions.
 
-Your engineering team has already been provided an API endpoint where form data can be posted. The Additional Docs section includes more information about how the endpoint works. For this exercise, you'll only be building the frontend that communicates with the API endpoint. (You won't need to make any additional changes to the API itself.)
+Your engineering team has already been provided a functional UI where users can sign up for the newsletter. For this exercise, you'll only be building the backend that handles requests from the UI (You won't need to make any additional changes to the UI itself.)
 
 Your implementation should meet the following requirements:
 
-- Post your form data to the API provided (see Additional Docs below).
-- Gracefully handle any errors that come back from the API.
-- Include automated tests for your implementation.
-- Persist the form submissions locally using [json-server][]
-- The front-end styling should roughly match the desktop designs
-
-[json-server]: https://npmjs.com/package/json-server
+- Setup a server to with an endpoint to process newsletter sign-ups.
+- Handle the POST requests with form data that the UI provided makes upon submission (see Additional Docs below).
+- Gracefully handle any errors per the validation rules.
+- The front-end should show any validation errors returned from unsuccessful form submissions.
+- Persist successful form submissions locally by writing to a JSON file.
+- Include unit tests for your implementation.
+- Choose _only one_ of the following requirements:
+  - Write your code in TypeScript.
+  - Add an additional field to the form and endpoint that might be useful such as phone number, zip code, or desired newsletter frequency.
+  - Do something else that shows off your skills! (If you choose this option, explain in your README why this is a valuable addition.)
 
 Along with your code submission, please include a **brief** README to cover the following:
 
 - Explain any decisions you made when working on the assignment. (Trade-offs or other considerations.)
-- What are some questions you would ask the designer about this design?
+- What are some questions you would ask the technical lead of this project (if any)?
+- What are some questions you would ask the designer about this design (if any)?
 - We are always looking to improve our interviewing process! Please let us know what your experience was completing this project. (Your answer here won't count for/against you, but we'll use your feedback to make improvements to this assignment.)
-  - Was the scope too large to finish within the given time requirement? Was it not large enough? Are there any improvements we could make the prompt easier to understand?
+- Was the scope too large to finish within the given time requirement? Was it not large enough? Are there any improvements we could make the prompt easier to understand?
 
 Your goal is to finish as much of this as you can in the time that you have!
 
@@ -37,23 +41,25 @@ Your goal is to finish as much of this as you can in the time that you have!
 
 ### Form submission API endpoint
 
-Your engineering team has already built an endpoint (**/api/form**) that you can use to submit form data. To submit form data, you can make a POST request to the endpoint, as shown in the code block below:
+Your job is to build an endpoint that can be used to process submitted form data. The expectation is for this endpoint to be a standalone server accepting `POST` requests at `http://localhost:3000/newsletter-signup`.
 
-```jsx
-const response = await window
-  .fetch(`/api/form`, {
-    method: `POST`,
-    headers: {
-      "content-type": "application/json",
-    },
-    body: {
-      // Insert whatever data you want to send in the request.
-      // For example:
-      hello: "world",
-    },
-  })
-  .then(res => res.json())
+An example of the JSON payload you will be processing can be seen below:
+
+```json
+{
+  "name": "Johnny Appleseed",
+  "email": "johnny@example.com",
+  "country": "United States",
+  "region": "New York"
+}
 ```
+
+The validation rules that you will need to enforce are:
+
+- All values are required (with the caveat of region when it's not applicable)
+- The name must be at least two characters in length
+- The email must be a valid email address
+- The country and region must be valid values, see [Countries and region](#countries-and-regions) for more information on what that means
 
 A successful response will look like the object below:
 
@@ -66,7 +72,7 @@ A successful response will look like the object below:
 }
 ```
 
-If something is wrong with the request that was sent (like it's not a POST request or there's some data missing), the endpoint will respond with a 400 error similar to the one below. (Your client-side validation of the form inputs should check for any data problems before calling the form endpoint.)
+If something is wrong with the request that was sent (missing or invalid input), the endpoint should respond with a 400 error similar to the one below. (The client is not validating any of the form inputs, so it's all on the server to validate the information provided).
 
 ```jsx
 {
@@ -77,45 +83,34 @@ If something is wrong with the request that was sent (like it's not a POST reque
 }
 ```
 
-Unfortunately, the form endpoint isn't super reliable. Sometimes, things go wrong on the server, and requests will return a 500 error code. In that case, the response will look something like this:
-
-```jsx
-{
-  status: 500,
-  errors: [{
-    message: ["Internal server error, please try again."]
-  }]
-}
-```
-
-Note that the error property returns an *array* of errors; there may be more than one error message returned.
+Note that the error property returns an _array_ of errors; there may be more than one error message returned.
 
 ### Countries and regions
 
-The project code includes a JSON file (**src/data/countryRegionSelect.json**) that contains all the countries to be included in the Country dropdown.
+The project code includes a JSON file (**src/data/countryRegionSelect.json**) that contains all the countries included in the Country dropdown.
 
 Some of the countries will also require an additional Region field:
 
-- If the country is USA, the Region dropdown should list the U.S. states.
-- If the country is Canada, the Region dropdown should list the Canadian provinces.
-- If the country is something else, the Region dropdown should not display.
+- If the country is United States, the Region should be validated against the list the U.S. states.
+- If the country is Canada, the Region should be validated against list the Canadian provinces.
+- If the country is something else, the Region should not be validated.
 
 The available states and provinces can also be found in the **src/data/countryRegionSelect.json** file.
 
 ### Testing conventions
 
-The project is already set up to use Jest. If you decide to add automated tests for your form, look at the **src/tests/layout.test.js** file for an example of how to use the testing framework.
+TODO: set testing expectations here
 
 ## How to Submit
 
-Use the files in this project as an initial commit to a new private Github repository. Submit your solution as a pull request to that repository. Please include a PR description that explains the approach to the problems. You may also use that opportunity to explain how you prioritized the items or communicate anything else of importance.
+Use the files in this project as an initial commit to a new private Github repository. Submit your solution as a pull request to that repository. Please include a PR description that explains how to run the project as well as your approach to the problem. You may also use that opportunity to explain how you prioritized the items or communicate anything else of importance.
 
 When you’ve completed your project, please send the link to the private repository to [caitlin.byrnes@gatsbyjs.com](mailto:caitlin.byrnes@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
 
 - vitaliy-at-gatsby
 - rmatambo8
 - jxnblk
-- thinkybeast
+- greglobinski
 - aghreed
 - fk
 
