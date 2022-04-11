@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Formik, Form, Field, FieldProps } from "formik"
+import { Formik, Form, Field } from "formik"
 import Dropdown from "./dropdown"
 import countryRegionData from "../data/countryRegionSelect.json"
 
