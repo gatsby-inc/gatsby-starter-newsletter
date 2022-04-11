@@ -8,7 +8,7 @@
 
 For this exercise, you will implement the backend of a newsletter sign-up form — validating input and persisting successful submissions.
 
-Your engineering team has already been provided a functional UI where users can sign up for the newsletter. For this exercise, you'll only be building the backend that handles requests from the UI (You won't need to make any additional changes to the UI itself.)
+Your engineering team has already provided a functional UI where users can sign up for the newsletter. For this exercise, you'll only be building the backend that handles requests from the UI (you won't need to make any additional changes to the UI itself.)
 
 Your implementation should meet the following requirements:
 
@@ -92,8 +92,8 @@ The project code includes a JSON file (**src/data/countryRegionSelect.json**) th
 
 Some of the countries will also require an additional Region field:
 
-- If the country is United States, the Region should be validated against the list the U.S. states.
-- If the country is Canada, the Region should be validated against list the Canadian provinces.
+- If the country is the United States, the Region should be validated against the list of U.S. states.
+- If the country is Canada, the Region should be validated against the list of Canadian provinces.
 - If the country is something else, the Region should not be validated.
 
 The available states and provinces can also be found in the **src/data/countryRegionSelect.json** file.
@@ -106,7 +106,7 @@ The project already has Jest included, however, you can decide to use another te
 
 Use the files in this project as an initial commit to a new private Github repository. Submit your solution as a pull request to that repository. Please include a PR description that explains how to run the project as well as your approach to the problem. You may also use that opportunity to explain how you prioritized the items or communicate anything else of importance.
 
-When you’ve completed your project, please send the link to the private repository to [caitlin.byrnes@gatsbyjs.com](mailto:caitlin.byrnes@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
+When you’ve completed your project, please send the link to the private repository to [trish.do@gatsbyjs.com](mailto:trish.do@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
 
 - vitaliy-at-gatsby
 - rmatambo8
