@@ -18,10 +18,6 @@ Your implementation should meet the following requirements:
 - The front-end should show any validation errors returned from unsuccessful form submissions.
 - Persist successful form submissions locally by writing to a JSON file (see Persisting submissions below).
 - Include automated tests for your implementation.
-- Choose _only one_ of the following requirements:
-  - Write your code in TypeScript.
-  - Add an additional field to the form and endpoint that might be useful such as phone number, zip code, or desired newsletter frequency.
-  - Do something else that shows off your skills! (If you choose this option, explain in your README why this is a valuable addition.)
 
 Along with your code submission, please include a **brief** README to cover the following:
 
