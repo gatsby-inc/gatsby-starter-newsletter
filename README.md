@@ -71,7 +71,7 @@ A successful response will look like the object below:
 }
 ```
 
-If something is wrong with the request that was sent (missing or invalid input), the endpoint should respond with a 400 error similar to the one below. (Note: The client is not validating any of the form inputs, so it's all on the server to validate the information provided).
+If something is wrong with the request that was sent (missing or invalid input), the endpoint should respond with an error similar to the one below. (Note: The client is not validating any of the form inputs, so it's all on the server to validate the information provided).
 
 ```jsx
 {
