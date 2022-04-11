@@ -82,13 +82,13 @@ If something is wrong with the request that was sent (missing or invalid input),
 }
 ```
 
-Also note that the error property returns an _array_ of errors; there may be more than one error message returned.
+Also note that the error property returns an _array_ of errors; there may be more than one error message returned. The front-end is already written to display these errors as intended so long as the API contract is adhered to.
 
 ### Persisting submissions
 
 We will want to keep track of all the valid newsletter sign ups so that we can reach out to these individuals later. As the last part of processing a successful submission, persist the submission fields by writing to a JSON file.
 
-To ensure that users cannot get on the newsletter list twice, return a custom error message if the email address has previously been submitted and persisted.
+Additionally, to prevent users from getting put on the newsletter list twice, return a custom error message if the email address has previously been submitted and persisted.
 
 ### Countries and regions
 
@@ -104,7 +104,7 @@ The available states and provinces can also be found in the **src/data/countryRe
 
 ### Testing conventions
 
-The project is already set up to use Jest, however you can decide to use another test framework if you prefer. The point is to see some sort of test coverage on the code you write to satisfy the project requirements.
+The project already has Jest included, however, you can decide to use another test framework if you prefer. We just want to see some sort of test coverage on the code you write to satisfy the project requirements.
 
 ## How to Submit
 
