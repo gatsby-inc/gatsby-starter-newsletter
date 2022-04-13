@@ -16,11 +16,10 @@ Your implementation should meet the following requirements:
 - Work at all screen sizes, including the desktop and mobile views provided in the designs.
 - Gracefully handle any errors that come back from the API.
 - Include automated tests for your implementation.
-- Choose **_only one_** of the following requirements:
+- Optionally, choose **one** of the following requirements:
   - Add some additional styling to the existing designs.
   - Improve the accessibility of your form.
   - Write your code in TypeScript.
-  - Do something else that shows off your skills! (If you choose this option, explain in your README why this is a valuable addition.)
 
 Along with your code submission, please include a **brief** README to cover the following:
 
