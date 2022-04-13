@@ -6,7 +6,7 @@
 
 ## Requirements
 
-For this exercise, you will implement the sign-up flow based on a set of provided designs. The zip folder for the project is available at [https://drive.google.com/drive/folders/1M4wIUtPAlktGpi-Tg0h6JH1UsUYe8_7s]. (Designs for both desktop and mobile views can be found in the /designs folder).
+For this exercise, you will implement the sign-up flow based on a set of provided designs. The zip folder for the project is available on [Google Drive](https://drive.google.com/drive/folders/1Eb8Sigb5LB0siBf73P_8ZaiZowq3_BZb?usp=sharing). (Designs for both desktop and mobile views can be found in the /designs folder).
 
 Your engineering team has already been provided an API endpoint where form data can be posted. The Additional Docs section includes more information about how the endpoint works. For this exercise, you'll only be building the frontend that communicates with the API endpoint. (You won't need to make any additional changes to the API itself.)
 
@@ -90,7 +90,7 @@ Unfortunately, the form endpoint isn't super reliable. Sometimes, things go wron
 }
 ```
 
-Note that the error property returns an *array* of errors; there may be more than one error message returned.
+Note that the error property returns an _array_ of errors; there may be more than one error message returned.
 
 ### Countries and regions
 
@@ -112,12 +112,12 @@ The project is already set up to use Jest. If you decide to add automated tests 
 
 Use the files in this project as an initial commit to a new private Github repository. Submit your solution as a pull request to that repository. Please include a PR description that explains the approach to the problems. You may also use that opportunity to explain how you prioritized the items or communicate anything else of importance.
 
-When you’ve completed your project, please send the link to the private repository to [caitlin.byrnes@gatsbyjs.com](mailto:caitlin.byrnes@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
+When you’ve completed your project, please send the link to the private repository to [caitlin.byrnes@gatsbyjs.com](mailto:caitlin.byrnes@gatsbyjs.com) or [vitaliy.peker@gatsbyjs.com](mailto:vitaliy.peker@gatsbyjs.com). Please make sure to share the private repository with the following Github users:
 
-- smthomas
-- TylerBarnes
-- thinkybeast
-- meganesu
+- vitaliy-at-gatsby
+- rmatambo8
+- aghreed
+- greglobinski
 - fk
 - jxnblk
 
